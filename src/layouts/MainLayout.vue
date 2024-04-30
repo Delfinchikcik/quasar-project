@@ -12,7 +12,7 @@
         <div>
           <q-btn class="notifications_icon" icon="notifications"></q-btn>
           <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
-          <q-btn class="registration_btn">Регистрация</q-btn>
+          <q-btn to="RegistrationPage" class="registration_btn" tag="a">Регистрация</q-btn>
         </div>
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
