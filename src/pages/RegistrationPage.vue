@@ -9,7 +9,8 @@
             <div class="text-center full-width">
               <div><img src="~assets/logo.png" style="width: 33%"/></div>
               <div class="text-weight-bolder text-white text-h6">Quasar Магазин</div>
-              <div class="text-caption text-white">Quasar Магазин - универсальное решение</div>
+              <div class="text-caption text-white">Команды WebDreamTeam 1T</div>
+              <div><img src="~assets/Logo_white_wdt.png" style="width: 23%"/></div>
             </div>
           </q-card-section>
           <q-card-section class="col-md-8 col-lg-8 col-sm-12 sol-xs-12 float-left">
@@ -22,7 +23,7 @@
                     dense
                     outlined
                     v-model="username"
-                    label="Username"
+                    label="Логин"
                     lazy-rules
                   />
 
@@ -31,7 +32,7 @@
                     type="password"
                     outlined
                     v-model="password"
-                    label="Password"
+                    label="Пароль"
                     lazy-rules
                   />
 
@@ -40,14 +41,14 @@
                     type="password"
                     outlined
                     v-model="password"
-                    label="Repeat password"
+                    label="Повторите пароль"
                     lazy-rules
                   />
-                  <q-checkbox class="text-grey-8" dense v-model="remember_me" label="Remember me"/>
+                  <q-checkbox class="text-grey-8" dense v-model="remember_me" label="Запомнить меня"/>
                   <div>
-                    <q-btn class="text-capitalize" size="sm" style="width:75px" dense label="Login" to="/IndexPage" type="button"
+                    <q-btn class="text-capitalize" size="sm" style="width:75px" dense label="Sign Up" to="/IndexPage" type="button"
                            color="primary"/>
-                    <q-btn class="float-right text-blue-9 text-capitalize" size="sm" style="width:75px;border: 1px solid #36669e;" dense label="Sign Up"
+                    <q-btn class="float-right text-blue-9 text-capitalize" size="sm" style="width:75px;border: 1px solid #36669e;" dense label="Login" href="/"
                            type="button"/>
                   </div>
                 </q-form>
