@@ -68,6 +68,7 @@ import { ref, onMounted } from "vue";
 import { db } from "src/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
+
 defineOptions({
   name: "MainPage",
 });
