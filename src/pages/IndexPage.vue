@@ -61,13 +61,148 @@
       <q-btn color="secondary" icon-right="mail" @click="open('right')" />
     </div>
   </q-page>
+
+  <q-page class="q-mt-sm">
+    <div class="row q-col-gutter-sm">
+      <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10">
+        <q-carousel
+          :class="$q.platform.is.desktop ? 'q-ml-sm' : ''"
+          arrows
+          animated
+          v-model="slide"
+          height="500px"
+        >
+          <q-carousel-slide name="first" img-src="gallery-2.jpg">
+            <div class="absolute-bottom custom-caption">
+              <div class="text-subtitle1">Алупкинский дворец</div>
+              <div class="text-caption"></div>
+            </div>
+          </q-carousel-slide>
+          <q-carousel-slide name="second" img-src="gallery-5.jpg">
+            <div class="absolute-bottom custom-caption">
+              <div class="text-subtitle1">Ливадийский дворец</div>
+              <div class="text-caption"></div>
+            </div>
+          </q-carousel-slide>
+          <q-carousel-slide name="third" img-src="gallery-1.jpg">
+            <div class="absolute-bottom custom-caption">
+              <div class="text-subtitle1">Массандровский дворец</div>
+              <div class="text-caption">Александра III</div>
+            </div>
+          </q-carousel-slide>
+        </q-carousel>
+      </div>
+    </div>
+    <div class="text-grey-9 text-weight-bold">
+      <div class="row items-center q-mx-sm">
+        <div class="col-12 q-mt-sm">
+          <div class="q-pl-md bg-white q-pt-sm">
+            <!-- <span class="text-grey-9 text-h6 text-weight-bold">Latest Launches</span>
+            <a class="text-primary q-ml-sm cursor-pointer">[see all]</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="row items-center q-mx-sm">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 q-mt-sm">
+          <div class="q-pl-md bg-white q-pt-sm">
+            <span class="text-grey-9 text-h6 text-weight-bold"
+              >Популярные туры</span
+            >
+            <a class="text-primary q-ml-sm cursor-pointer">[читать далее]</a>
+          </div>
+          <q-carousel
+            v-model="trending_slide"
+            transition-prev="slide-right"
+            transition-next="slide-left"
+            swipeable
+            animated
+            control-color="primary"
+            navigation
+            padding
+            arrows
+            height="260px"
+            class="rounded-borders"
+          >
+            <q-carousel-slide
+              v-for="(val, idx) in [1, 2, 3]"
+              :name="val"
+              :key="idx"
+              class="column no-wrap"
+            >
+              <div
+                class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+              >
+              <q-img
+                  @click="$router.push('/category')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
+                  src="gallery-5.jpg"
+                >
+                  <div
+                    class="absolute-bottom custom-caption"
+                    style="background-color: rgba(0, 0, 0, 0.5)"
+                  >
+                    <div class="text-caption text-weight-bolder">Ливадийский дворец</div>
+                  </div>
+                </q-img>
+                <q-img
+                  @click="$router.push('/category')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
+                  src="hero-banner.jpg"
+                >
+                  <div
+                    class="absolute-bottom custom-caption"
+                    style="background-color: rgba(0, 0, 0, 0.5)"
+                  >
+                    <div class="text-caption text-weight-bolder">Ялта</div>
+                  </div>
+                </q-img>
+                <q-img
+                  @click="$router.push('/category')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
+                  src="gallery-4.jpg"
+                >
+                  <div
+                    class="absolute-bottom custom-caption"
+                    style="background-color: rgba(0, 0, 0, 0.5)"
+                  >
+                    <div class="text-caption text-weight-bolder">
+                      Ласточкино гнездо
+                    </div>
+                  </div>
+                </q-img>
+
+                <q-img
+                  @click="$router.push('/category')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
+                  src="gallery-1.jpg"
+                >
+                  <div
+                    class="absolute-bottom custom-caption"
+                    style="background-color: rgba(0, 0, 0, 0.5)"
+                  >
+                    <div class="text-caption text-weight-bolder">
+                      Массандровский дворец
+                    </div>
+                  </div>
+                </q-img>
+
+              </div>
+            </q-carousel-slide>
+          </q-carousel>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import { db } from "src/firebase";
 import { collection, getDocs } from "firebase/firestore";
-
 
 defineOptions({
   name: "MainPage",
@@ -121,6 +256,20 @@ const sendMessage = () => {
   }
 };
 </script>
+<script>
+import Vue from "vue";
+
+export default {
+  data() {
+    return {
+      slide: "first",
+      trending_slide: 1,
+      latest_slide: 1,
+    };
+  },
+  methods: {},
+};
+</script>
 
 <style>
 .my-emoji {
@@ -164,4 +313,11 @@ const sendMessage = () => {
     transform: translateX(0);
   }
 }
+</style>
+<style lang="sass" scoped>
+.custom-caption
+  text-align: center
+  padding: 8px
+  color: white
+  background-color: rgba(0, 0, 0, .3)
 </style>
