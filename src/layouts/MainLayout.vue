@@ -25,91 +25,37 @@
     <!-- я тут притаился   но было 220 ниже-->
     <q-drawer v-model="leftDrawerOpen" show-if-above :width="200" :breakpoint="450">
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
+        <q-item clickable v-ripple to="/IndexPage" exact>
+            <q-item-section avatar>
+              <q-icon name="computer" />
+            </q-item-section>
+
+            <q-item-section>Главная страница</q-item-section>
+          </q-item>
         <q-list padding>
           <q-item clickable v-ripple to="/my_profile" exact>
             <q-item-section avatar>
               <q-icon name="account_circle" />
             </q-item-section>
 
-            <q-item-section> - </q-item-section>
+            <q-item-section> Профиль </q-item-section>
           </q-item>
 
 
-          <q-item clickable v-ripple to="/" exact>
+          <q-item clickable v-ripple to="/ProductCatalog" exact>
             <q-item-section avatar>
-              <q-icon name="cloud_download" />
+              <q-icon name="list" />
             </q-item-section>
 
-            <q-item-section> - </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple to="/nature" exact>
-            <q-item-section avatar>
-              <q-icon name="create" />
-            </q-item-section>
-
-            <q-item-section> - </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple to="/aboutus" exact>
-            <q-item-section avatar>
-              <q-icon name="format_list_bulleted
-" />
-            </q-item-section>
-
-            <q-item-section> - </q-item-section>
+            <q-item-section> Каталог товаров </q-item-section>
           </q-item>
 
           <q-item clickable v-ripple to="/contacts" exact>
             <q-item-section avatar>
-              <q-icon name="school" />
+              <q-icon name="contacts" />
             </q-item-section>
 
-            <q-item-section> - </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple to="/" exact>
-            <q-item-section avatar>
-              <q-icon name="timeline" />
-            </q-item-section>
-
-            <q-item-section> - </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple to="/" exact>
-            <q-item-section avatar>
-              <q-icon name="mood" />
-            </q-item-section>
-
-            <q-item-section> - </q-item-section>
-          </q-item>
-
-
-
-
-
-          <q-item clickable v-ripple to="/" exact>
-            <q-item-section avatar>
-              <q-icon name="search" />
-            </q-item-section>
-
-            <q-item-section> -  </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple to="/" exact>
-            <q-item-section avatar>
-              <q-icon name="group_work" />
-            </q-item-section>
-
-            <q-item-section> - </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple to="/" exact>
-            <q-item-section avatar>
-              <q-icon name="group_add" />
-            </q-item-section>
-
-            <q-item-section> - </q-item-section>
+            <q-item-section>Контакты</q-item-section>
           </q-item>
         </q-list>
       </q-scroll-area>
