@@ -5,7 +5,7 @@
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>
           <q-avatar>
-            <img src="logo.png"/>
+            <img src="logo.png" />
           </q-avatar>
           Team project
         </q-toolbar-title>
@@ -22,13 +22,8 @@
         <q-route-tab to="/page3" label="Page Three" />
       </q-tabs>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      :width="220"
-      :breakpoint="400"
-    >
+    <!-- я тут притаился   но было 220 ниже-->
+    <q-drawer v-model="leftDrawerOpen" show-if-above :width="200" :breakpoint="450">
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
         <q-list padding>
           <q-item clickable v-ripple to="/my_profile" exact>
@@ -58,10 +53,8 @@
 
           <q-item clickable v-ripple to="/aboutus" exact>
             <q-item-section avatar>
-              <q-icon
-                name="format_list_bulleted
-"
-              />
+              <q-icon name="format_list_bulleted
+" />
             </q-item-section>
 
             <q-item-section> - </q-item-section>
@@ -90,6 +83,8 @@
 
             <q-item-section> - </q-item-section>
           </q-item>
+
+
 
 
 
@@ -122,57 +117,57 @@
 
     <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered>
       <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-          <div class="absolute-bottom bg-transparent">
-            <q-avatar size="56px" class="q-mb-sm">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-            </q-avatar>
-            <div class="text-weight-bold">Razvan Stoenescu</div>
-            <div>@rstoenescu</div>
-          </div>
-        </q-img>
-        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-          <q-list padding>
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="inbox" />
-              </q-item-section>
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+          </q-avatar>
+          <div class="text-weight-bold">Razvan Stoenescu</div>
+          <div>@rstoenescu</div>
+        </div>
+      </q-img>
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+        <q-list padding>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="inbox" />
+            </q-item-section>
 
-              <q-item-section>
-                Inbox
-              </q-item-section>
-            </q-item>
+            <q-item-section>
+              Inbox
+            </q-item-section>
+          </q-item>
 
-            <q-item active clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="star" />
-              </q-item-section>
+          <q-item active clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="star" />
+            </q-item-section>
 
-              <q-item-section>
-                Star
-              </q-item-section>
-            </q-item>
+            <q-item-section>
+              Star
+            </q-item-section>
+          </q-item>
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="send" />
-              </q-item-section>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="send" />
+            </q-item-section>
 
-              <q-item-section>
-                Send
-              </q-item-section>
-            </q-item>
+            <q-item-section>
+              Send
+            </q-item-section>
+          </q-item>
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="drafts" />
-              </q-item-section>
+          <q-item clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="drafts" />
+            </q-item-section>
 
-              <q-item-section>
-                Drafts
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-scroll-area>
+            <q-item-section>
+              Drafts
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -196,13 +191,13 @@
 
         <div class="q-mx-md">
           <q-btn class="footer_social">
-            <q-icon  name="img:vk_icon.png" />
+            <q-icon name="img:vk_icon.png" />
           </q-btn>
           <q-btn class="footer_social">
-            <q-icon  name="img:youtube_icon.png" />
+            <q-icon name="img:youtube_icon.png" />
           </q-btn>
           <q-btn class="footer_social">
-            <q-icon  name="img:telegram_icon.png" />
+            <q-icon name="img:telegram_icon.png" />
           </q-btn>
         </div>
       </q-toolbar>
@@ -225,7 +220,7 @@ export default {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
       rightDrawerOpen,
-      toggleRightDrawer () {
+      toggleRightDrawer() {
         rightDrawerOpen.value = !rightDrawerOpen.value
       }
     };
@@ -245,39 +240,49 @@ export default {
   background-color: rgb(236, 233, 233);
   margin-right: 6px;
 }
+
 .enter_btn,
 .registration_btn {
   background-color: rgb(236, 233, 233);
   margin: 6px;
 }
+
 .our_logo {
   width: 3vw;
   margin-right: 5vw;
 }
+
 .phone_text {
   color: grey;
 }
+
 .footer_ref {
   text-decoration: none;
   color: black;
   margin-right: 5vw;
 }
-.phone_container{
+
+.phone_container {
   margin-top: 20px;
 }
-.phone_with_text{
+
+.phone_with_text {
   text-decoration: none;
   color: black;
   margin-right: 3px;
 }
-.footer_social{
+
+.footer_social {
   width: 30px;
   height: 30px;
   margin: 10px;
 }
 
 @media (max-width: 420px) {
-  .enter_btn,.notifications_icon,.registration_btn{
+
+  .enter_btn,
+  .notifications_icon,
+  .registration_btn {
     display: none;
   }
 }
