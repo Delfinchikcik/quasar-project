@@ -11,8 +11,8 @@
         </q-toolbar-title>
         <div>
           <q-btn class="notifications_icon" icon="notifications"></q-btn>
-          <q-btn class="enter_btn">Войти</q-btn>
-          <q-btn class="registration_btn">Регистрация</q-btn>
+          <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
+          <q-btn to="RegistrationPage" class="registration_btn" tag="a">Регистрация</q-btn>
         </div>
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
@@ -31,6 +31,15 @@
     >
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
         <q-list padding>
+          <q-item clickable v-ripple to="/my_profile" exact>
+            <q-item-section avatar>
+              <q-icon name="account_circle" />
+            </q-item-section>
+
+            <q-item-section> - </q-item-section>
+          </q-item>
+
+
           <q-item clickable v-ripple to="/" exact>
             <q-item-section avatar>
               <q-icon name="cloud_download" />
@@ -82,13 +91,7 @@
             <q-item-section> - </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple to="/" exact>
-            <q-item-section avatar>
-              <q-icon name="account_circle" />
-            </q-item-section>
 
-            <q-item-section> - </q-item-section>
-          </q-item>
 
           <q-item clickable v-ripple to="/" exact>
             <q-item-section avatar>
@@ -180,17 +183,17 @@
 
     <q-footer elevated class="bg-white text-white">
       <q-toolbar class="text-black row items-center justify-between">
-        
+
           <img class="our_logo" src="logo.png" />
 
           <a class="footer_ref" href="tel:+74999224710">+7 499 922-47-10</a>
-          
+
             <a class="phone_with_text" href="tel:88007006841">8 800 700-68-41</a>
 
           <a class="footer_ref" href="email:support@geekbrains.ru"
             >support@sell.ru</a
           >
-        
+
         <div class="q-mx-md">
           <q-btn class="footer_social">
             <q-icon  name="img:vk_icon.png" />
