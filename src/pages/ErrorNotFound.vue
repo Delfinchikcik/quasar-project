@@ -5,7 +5,7 @@
       class="background-image"
     >
     <div class="content fixed-center text-center">
-      <p class="text-h4 text-white">Извините, выберите другой тур...<strong class="text-warning">(404)</strong></p>
+      <p class="text-h4 text-white">Извените, выберите другой тур...<strong class="text-warning">(404)</strong></p>
       <q-btn
         color="primary"
         style="width: 200px;"
