@@ -19,7 +19,6 @@
                 </template>
                 <div>{{ message.text }}</div>
               </q-chat-message>
-
               <q-chat-message
                 sent
                 text-color="white"
@@ -68,21 +67,17 @@ import { ref, onMounted } from "vue";
 import { db } from "src/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
-
 defineOptions({
   name: "MainPage",
 });
 const dialog = ref(false);
 const position = ref("right");
 const newMessageText = ref("");
-
 const open = (position) => {
   dialog.value = true;
   position.value = position;
 };
-
 const chatMessages = ref([]);
-
 onMounted(async () => {
   const querySnapshot = await getDocs(collection(db, "chatMassage"));
   const fbDb = [];

@@ -57,6 +57,15 @@
 
             <q-item-section>Контакты</q-item-section>
           </q-item>
+
+          <q-item clickable v-ripple to="/favorite" exact>
+            <q-item-section avatar>
+              <q-icon name="star" />
+            </q-item-section>
+
+            <q-item-section>Избранное</q-item-section>
+          </q-item>
+
         </q-list>
       </q-scroll-area>
     </q-drawer>
