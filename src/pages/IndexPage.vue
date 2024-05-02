@@ -109,7 +109,7 @@
             >
             <a class="text-primary q-ml-sm cursor-pointer">[читать далее]</a>
           </div>
-          <q-carousel
+          <!-- <q-carousel
             v-model="trending_slide"
             transition-prev="slide-right"
             transition-next="slide-left"
@@ -132,7 +132,7 @@
                 class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
               >
               <q-img
-                  @click="$router.push('/category')"
+                  @click="$router.push('/#')"
                   style="border: 1px solid lightgrey"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
                   src="gallery-5.jpg"
@@ -145,7 +145,7 @@
                   </div>
                 </q-img>
                 <q-img
-                  @click="$router.push('/category')"
+                  @click="$router.push('/#')"
                   style="border: 1px solid lightgrey"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
                   src="hero-banner.jpg"
@@ -158,7 +158,7 @@
                   </div>
                 </q-img>
                 <q-img
-                  @click="$router.push('/category')"
+                  @click="$router.push('/#')"
                   style="border: 1px solid lightgrey"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
                   src="gallery-7.jpg"
@@ -174,7 +174,7 @@
                 </q-img>
 
                 <q-img
-                  @click="$router.push('/category')"
+                  @click="$router.push('/#')"
                   style="border: 1px solid lightgrey"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
                   src="gallery-1.jpg"
@@ -191,7 +191,10 @@
 
               </div>
             </q-carousel-slide>
-          </q-carousel>
+          </q-carousel> -->
+          <q-page-container>
+            <SimpleSlider />
+          </q-page-container>
         </div>
       </div>
     </div>
@@ -210,11 +213,14 @@ defineOptions({
 const dialog = ref(false);
 const position = ref("right");
 const newMessageText = ref("");
+
 const open = (position) => {
   dialog.value = true;
   position.value = position;
 };
+
 const chatMessages = ref([]);
+
 onMounted(async () => {
   const querySnapshot = await getDocs(collection(db, "chatMassage"));
   const fbDb = [];
@@ -254,9 +260,13 @@ const sendMessage = () => {
 };
 </script>
 <script>
-import Vue from "vue";
+import SimpleSlider from 'components/SimpleSlider.vue'
 
 export default {
+  name: 'LayoutDefault',
+  components: {
+    SimpleSlider
+  },
   data() {
     return {
       slide: "first",
@@ -264,9 +274,24 @@ export default {
       latest_slide: 1,
     };
   },
-  methods: {},
 };
+
 </script>
+
+<style lang="stylus">
+.q-layout-page-container
+  height: 100vh
+  min-height: 300px
+</style>
+
+
+<style lang="stylus">
+.q-layout-page-container
+  height: 100vh
+  min-height: 300px
+</style>
+
+
 
 <style>
 .my-emoji {

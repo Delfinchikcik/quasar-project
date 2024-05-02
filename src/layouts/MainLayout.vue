@@ -3,7 +3,7 @@
     <q-header elevated class="bg-white text-black">
       <q-toolbar class="toolbar bg-blue">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title>
+        <q-toolbar-title style="color: #fff">
           <q-avatar class="our_logo_header">
             <img src="~assets/Logo_white_wdt.png" />
           </q-avatar>
@@ -12,9 +12,7 @@
         <div>
           <q-btn class="notifications_icon" icon="notifications"></q-btn>
           <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
-          <q-btn to="RegistrationPage" class="registration_btn" tag="a"
-            >Регистрация</q-btn
-          >
+          <q-btn to="RegistrationPage" class="registration_btn" tag="a">Регистрация</q-btn>
         </div>
       </q-toolbar>
     </q-header>
@@ -89,7 +87,7 @@
 
         <div class="q-mx-md">
           <q-btn class="footer_social">
-            <q-icon name="img:vk_icon.png" />
+            <q-icon name="img:vk_icon_w.png" />
           </q-btn>
           <q-btn class="footer_social">
             <q-icon name="img:youtube_icon.png" />
@@ -130,14 +128,16 @@ export default {
 .notifications_icon {
   border-radius: 50%;
   width: 1vw;
-  background-color: rgb(236, 233, 233);
+  background-color: primary;
   margin-right: 6px;
+  color: white
 }
 
 .enter_btn,
 .registration_btn {
-  background-color: rgb(236, 233, 233);
+  background-color: primary;
   margin: 6px;
+  color: white
 }
 
 .our_logo {
@@ -172,7 +172,7 @@ export default {
   width: 30px;
   height: 30px;
   margin: 10px;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 @media (max-width: 420px) {
