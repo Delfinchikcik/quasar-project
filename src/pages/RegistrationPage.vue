@@ -7,7 +7,7 @@
           <q-card-section v-if="$q.platform.is.desktop" class="col-md-4 col-lg-4 col-sm-12 sol-xs-12 items-center float-left" style="background-color: #1f509e"
                           :style="{'height':(win_height-270)+'px'}" horizontal>
             <div class="text-center full-width">
-              <div><img src="~assets/logo.png" style="width: 33%"/></div>
+              <div><img src="/gallery-2.jpg" style="width: 100%"/></div>
               <div class="text-weight-bolder text-white text-h6">Quasar Магазин</div>
               <div class="text-caption text-white">Команды WebDreamTeam 1T</div>
               <div><img src="~assets/Logo_white_wdt.png" style="width: 23%"/></div>
@@ -16,7 +16,7 @@
           <q-card-section class="col-md-8 col-lg-8 col-sm-12 sol-xs-12 float-left">
             <q-card-section class="items-center">
               <div>
-                <div v-if="!$q.platform.is.desktop" class="text-weight-bolder text-center q-mb-md text-primary text-h6">Quasar Магазин</div>
+                <div v-if="!$q.platform.is.desktop" class="text-weight-bolder text-center q-mb-md text-primary text-h6">Quasar Tours</div>
                 <q-form :style="$q.platform.is.desktop ? 'width:55%;margin: auto;' : 'margin: auto;'" class="q-gutter-md">
                   <span class="text-subtitle1 text-weight-bold text-grey-7">Регистрация!</span>
                   <q-input

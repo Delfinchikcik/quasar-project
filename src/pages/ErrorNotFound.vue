@@ -10,7 +10,7 @@
     <q-btn
       color="secondary"
       style="width:200px;"
-      to="/"
+      to="/IndexPage"
       label="Вернуться назад"
     />
   </div>
