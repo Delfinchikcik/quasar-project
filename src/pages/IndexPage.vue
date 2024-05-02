@@ -162,7 +162,7 @@
                   @click="$router.push('/category')"
                   style="border: 1px solid lightgrey"
                   class="rounded-borders col-lg-3 col-md-3 col-sm-12 col-xs-12 cursor-pointer full-height"
-                  src="gallery-4.jpg"
+                  src="gallery-7.jpg"
                 >
                   <div
                     class="absolute-bottom custom-caption"
