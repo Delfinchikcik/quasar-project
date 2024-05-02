@@ -5,9 +5,9 @@
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>
           <q-avatar class="our_logo_header">
-            <img src="icons\favicon-128x128.png" />
+            <img src="~assets/Logo_white_wdt.png" />
           </q-avatar>
-          Quasar Магазин
+          Quasar Tours
         </q-toolbar-title>
         <div>
           <q-btn class="notifications_icon" icon="notifications"></q-btn>
