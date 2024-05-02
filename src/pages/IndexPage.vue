@@ -1,10 +1,11 @@
 <template>
-  <q-page class="fixed-bottom">
-    <div class="float-right">
-      <q-dialog v-model="dialog" :position="position">
-        <div class="q-pa-md row justify-center">
-          <div style="width: 100%; max-width: 400px">
-            <div class="chat_container q-pb-sm">
+  <div>
+    <q-page class="fixed-bottom">
+      <div class="float-right">
+        <q-dialog v-model="dialog" :position="position">
+          <div class="q-pa-md row justify-center">
+            <div style="width: 100%; max-width: 400px">
+              <div class="chat_container q-pb-sm">
               <div class="chat_header">Чат</div>
               <q-chat-message
                 v-for="(message, index) in chatMessages"
@@ -60,8 +61,7 @@
       <q-btn color="secondary" icon-right="mail" @click="open('right')" />
     </div>
   </q-page>
-
-  <q-page class="q-mt-sm">
+  <div class="q-mt-sm">
     <div class="row q-col-gutter-sm">
       <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10">
         <q-carousel
@@ -195,7 +195,8 @@
         </div>
       </div>
     </div>
-  </q-page>
+  </div>
+</div>
 </template>
 
 <script setup>
