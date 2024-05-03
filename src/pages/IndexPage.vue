@@ -136,11 +136,11 @@
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 q-mt-sm">
                     <div class="q-pl-md bg-white q-pt-sm">
                     <span class="text-grey-9 text-h6 text-weight-bold">Популярные туры</span>
-                    <a class="text-primary q-ml-sm cursor-pointer">[читать далее]</a>
+                    <!-- <router-link to="/ProductCatalog" class="text-primary q-ml-sm cursor-pointer">[читать далее]</router-link> -->
 
                     <div style="height: 40vh;" class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="gallery-5.jpg"
@@ -150,7 +150,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog#')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="hero-banner.jpg"
@@ -160,7 +160,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="gallery-7.jpg"
@@ -170,7 +170,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="Koktebel.jpg"
