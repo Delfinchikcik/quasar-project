@@ -243,7 +243,7 @@ const sendMessage = () => {
 };
 </script>
 <script>
-import Vue from "vue";
+
 export default {
   data() {
     return {
