@@ -188,6 +188,7 @@ const addToCart = async (productId) => {
     products.value = products.value.filter(
       (product) => product.id !== productId.id
     );
+    totalSum.value -= productId.price
   } catch (error) {
     console.error("Error updating favorit status:", error);
   }
