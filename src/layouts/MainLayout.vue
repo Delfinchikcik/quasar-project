@@ -20,7 +20,7 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      :width="200"
+      :width="250"
       :breakpoint="450"
     >
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
@@ -42,10 +42,10 @@
 
           <q-item clickable v-ripple to="/ProductCatalog" exact>
             <q-item-section avatar>
-              <q-icon name="list" />
+              <q-icon name="map" />
             </q-item-section>
 
-            <q-item-section> Каталог товаров </q-item-section>
+            <q-item-section style="white-space: nowrap;">Список приключений</q-item-section>
           </q-item>
 
           <q-item clickable v-ripple to="/contacts" exact>
