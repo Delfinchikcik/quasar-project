@@ -1,6 +1,9 @@
 <template>
   <div>
-    <q-page class="fixed-bottom" style="display: flex; top:555px; justify-content:right;">
+    <q-page
+      class="fixed-bottom"
+      style="display: flex; top: 555px; justify-content: right"
+    >
       <div class="float-right">
         <q-dialog v-model="dialog" :position="position" class="float-right">
           <div class="q-pa-md row justify-center">
@@ -61,120 +64,178 @@
         <q-btn color="primary" icon-right="mail" @click="open('right')" />
       </div>
     </q-page>
-            <div class="q-mt-sm">
-              <div  class="row q-col-gutter-sm">
-              <div style="height: 50vh;" class="col-lg-12 col-md-12 col-sm-11 col-xs-11">
-                    <q-carousel
-                    :class="$q.platform.is.desktop ? 'q-ml-sm' : ''"
-                    height=100%
-                    swipeable
-                    animated
-                    v-model="slide"
-                    thumbnails
-                    infinite
-                    :interval="4000">
-                      <q-carousel-slide
-                        class="rounded-borders"  name="slide-1" img-src="gallery-2.jpg">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Алупкинский дворец</div>
-                          <div class="text-caption">графа Михаила Семёновича Воронцова</div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide class="rounded-borders" name="slide-2" img-src="gallery-5.jpg">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Ливадийский дворец</div>
-                          <div class="text-caption">Александра II</div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide class="rounded-borders" name="slide-3" img-src="gallery-1.jpg">
-                        <div class="absolute-top custom-caption">
-                          <div  class="text-subtitle1">Массандровский дворец</div>
-                          <div class="text-caption">Александра III</div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide class="rounded-borders" name="slide-4" img-src="AuDag_Adalary.jpg">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Аю-Даг и Адалары</div>
-                          <div class="text-caption"></div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide class="rounded-borders" name="slide-5" img-src="Hram_Solnca.jpeg">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Храм Солнца</div>
-                          <div class="text-caption"></div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide class="rounded-borders" name="slide-6" img-src="Mis_Fiolent_Yalta.png">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Мыс Фиолент</div>
-                          <div class="text-caption"></div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide class="rounded-borders" name="slide-7" img-src="Hram_Yalty_Svyatogo_Mihaila.jpg">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Храм Святого Архистратига Михаила</div>
-                          <div class="text-caption">Александра III</div>
-                        </div>
-                      </q-carousel-slide>
-                      <q-carousel-slide name="slide-8" img-src="DSC_0130.jpg">
-                        <div class="absolute-top custom-caption">
-                          <div class="text-subtitle1">Канатная дорога Ай-Петри</div>
-                          <div class="text-caption"></div>
-                        </div>
-                      </q-carousel-slide>
-                    </q-carousel>
-                  </div>
-              </div>
-              <div class="text-grey-9 text-weight-bold">
-                 <div class="row items-center q-mx-sm ">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 q-mt-sm">
-                    <div class="q-pl-md bg-white q-pt-sm">
-                    <span class="text-grey-9 text-h6 text-weight-bold">Популярные туры</span>
-                    <a class="text-primary q-ml-sm cursor-pointer">[читать далее]</a>
-
-                    <div style="height: 40vh;" class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-                    <q-img
-                        @click="$router.push('/ProductCatalog')"
-                        style="border: 1px solid lightgrey"
-                        class="rounded-borders col-3 cursor-pointer full-height fluid"
-                        src="gallery-5.jpg"
-                    >
-                        <div class="absolute-bottom custom-caption">
-                            <div class="text-caption text-weight-bolder">Ливадийский дворец</div>
-                        </div>
-                    </q-img>
-                    <q-img
-                        @click="$router.push('/#')"
-                        style="border: 1px solid lightgrey"
-                        class="rounded-borders col-3 cursor-pointer full-height fluid"
-                        src="hero-banner.jpg"
-                    >
-                        <div class="absolute-bottom custom-caption" >
-                            <div class="text-caption text-weight-bolder">Ялта</div>
-                        </div>
-                    </q-img>
-                    <q-img
-                        @click="$router.push('/ProductCatalog')"
-                        style="border: 1px solid lightgrey"
-                        class="rounded-borders col-3 cursor-pointer full-height fluid"
-                        src="gallery-7.jpg"
-                    >
-                        <div class="absolute-bottom custom-caption">
-                            <div class="text-caption text-weight-bolder">Ласточкино гнездо</div>
-                        </div>
-                    </q-img>
-                    <q-img
-                        @click="$router.push('/ProductCatalog')"
-                        style="border: 1px solid lightgrey"
-                        class="rounded-borders col-3 cursor-pointer full-height fluid"
-                        src="Koktebel.jpg"
-                    >
-                        <div class="absolute-bottom custom-caption" >
-                            <div class="text-caption text-weight-bolder">Коктебель</div>
-                        </div>
-                    </q-img>
+    <div class="q-mt-sm">
+      <div class="row q-col-gutter-sm">
+        <div
+          style="height: 50vh"
+          class="col-lg-12 col-md-12 col-sm-11 col-xs-11"
+        >
+          <q-carousel
+            :class="$q.platform.is.desktop ? 'q-ml-sm' : ''"
+            height="100%"
+            swipeable
+            animated
+            v-model="slide"
+            thumbnails
+            infinite
+            :interval="4000"
+          >
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-1"
+              img-src="gallery-2.jpg"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Алупкинский дворец</div>
+                <div class="text-caption">
+                  графа Михаила Семёновича Воронцова
                 </div>
               </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-2"
+              img-src="gallery-5.jpg"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Ливадийский дворец</div>
+                <div class="text-caption">Александра II</div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-3"
+              img-src="gallery-1.jpg"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Массандровский дворец</div>
+                <div class="text-caption">Александра III</div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-4"
+              img-src="AuDag_Adalary.jpg"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Аю-Даг и Адалары</div>
+                <div class="text-caption"></div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-5"
+              img-src="Hram_Solnca.jpeg"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Храм Солнца</div>
+                <div class="text-caption"></div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-6"
+              img-src="Mis_Fiolent_Yalta.png"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Мыс Фиолент</div>
+                <div class="text-caption"></div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide
+              class="rounded-borders"
+              name="slide-7"
+              img-src="Hram_Yalty_Svyatogo_Mihaila.jpg"
+            >
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">
+                  Храм Святого Архистратига Михаила
+                </div>
+                <div class="text-caption">Александра III</div>
+              </div>
+            </q-carousel-slide>
+            <q-carousel-slide name="slide-8" img-src="DSC_0130.jpg">
+              <div class="absolute-top custom-caption">
+                <div class="text-subtitle1">Канатная дорога Ай-Петри</div>
+                <div class="text-caption"></div>
+              </div>
+            </q-carousel-slide>
+          </q-carousel>
+        </div>
+      </div>
+      <div class="text-grey-9 text-weight-bold">
+        <div class="row items-center q-mx-sm">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 q-mt-sm">
+            <div class="q-pl-md bg-white q-pt-sm">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 8vh;
+                "
+              >
+                <q-btn
+                  to="/ProductCatalog"
+                  class="enter_btn"
+                  tag="a"
+                  color="primary"
+                  glossy
+                  :class="{ 'text-white': $q.dark.isActive }"
+                >
+                  Выбери приключения
+                </q-btn>
+              </div>
+              <div
+                style="height: 40vh"
+                class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+              >
+                <q-img
+                  @click="$router.push('/ProductCatalog')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-3 cursor-pointer full-height fluid"
+                  src="gallery-5.jpg"
+                >
+                  <div class="absolute-bottom custom-caption">
+                    <div class="text-caption text-weight-bolder">
+                      Ливадийский дворец
+                    </div>
+                  </div>
+                </q-img>
+                <q-img
+                  @click="$router.push('/ProductCatalog')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-3 cursor-pointer full-height fluid"
+                  src="hero-banner.jpg"
+                >
+                  <div class="absolute-bottom custom-caption">
+                    <div class="text-caption text-weight-bolder">Ялта</div>
+                  </div>
+                </q-img>
+                <q-img
+                  @click="$router.push('/ProductCatalog')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-3 cursor-pointer full-height fluid"
+                  src="gallery-7.jpg"
+                >
+                  <div class="absolute-bottom custom-caption">
+                    <div class="text-caption text-weight-bolder">
+                      Ласточкино гнездо
+                    </div>
+                  </div>
+                </q-img>
+                <q-img
+                  @click="$router.push('/ProductCatalog')"
+                  style="border: 1px solid lightgrey"
+                  class="rounded-borders col-3 cursor-pointer full-height fluid"
+                  src="Koktebel.jpg"
+                >
+                  <div class="absolute-bottom custom-caption">
+                    <div class="text-caption text-weight-bolder">Коктебель</div>
+                  </div>
+                </q-img>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -236,8 +297,8 @@ const sendMessage = () => {
   }
 };
 </script>
+<!-- Скрипт для карусели -->
 <script>
-
 export default {
   data() {
     return {
