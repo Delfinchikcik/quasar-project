@@ -1,34 +1,35 @@
-
-
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-white text-black">
       <q-toolbar class="toolbar bg-blue">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title>
+        <q-toolbar-title style="color: #fff">
           <q-avatar class="our_logo_header">
-            <img src="icons\favicon-128x128.png" />
+            <img src="~assets/Logo_white_wdt.png" />
           </q-avatar>
-          Quasar Магазин
+          Quasar Tours
         </q-toolbar-title>
         <div>
-          <ProductCatalog  @sendCount="putCount" v-show="false"/>
+          <ProductCatalog @sendCount="putCount" v-show="false" />
           <p>{{ counBascket }}</p>
-          <q-btn to="Shop" class="notifications_icon text-red" icon="local_grocery_store"></q-btn>
-          <q-btn to="/" class="enter_btn button is-primary" tag="a">Войти</q-btn>
+          <q-btn
+            to="Shop"
+            class="notifications_icon"
+            icon="local_grocery_store"
+          ></q-btn>
+          <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
           <q-btn to="RegistrationPage" class="registration_btn" tag="a"
-          >Регистрация</q-btn
-          >
+            >Регистрация</q-btn>
         </div>
       </q-toolbar>
     </q-header>
-    
+
     <q-drawer
-    v-model="leftDrawerOpen"
-    show-if-above
+      v-model="leftDrawerOpen"
+      show-if-above
       :width="200"
       :breakpoint="450"
-      >
+    >
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
         <q-item clickable v-ripple to="/IndexPage" exact>
           <q-item-section avatar>
@@ -38,7 +39,7 @@
           <q-item-section>Главная страница</q-item-section>
         </q-item>
         <q-list padding>
-          <q-item clickable v-ripple to="/my_profile" exact>
+          <q-item clickable v-ripple to="/My_profile" exact>
             <q-item-section avatar>
               <q-icon name="account_circle" />
             </q-item-section>
@@ -48,7 +49,7 @@
 
           <q-item clickable v-ripple to="/ProductCatalog" exact>
             <q-item-section avatar>
-              <q-icon name="list" />
+              <q-icon name="map" />
             </q-item-section>
 
             <q-item-section style="white-space: nowrap"
@@ -56,7 +57,7 @@
             >
           </q-item>
 
-          <q-item clickable v-ripple to="/contacts" exact>
+          <q-item clickable v-ripple to="/Contacts" exact>
             <q-item-section avatar>
               <q-icon name="contacts" />
             </q-item-section>
@@ -64,11 +65,10 @@
             <q-item-section>Контакты</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple to="/favorite" exact>
+          <q-item clickable v-ripple to="/Favorite" exact>
             <q-item-section avatar>
               <q-icon name="star" />
             </q-item-section>
-
             <q-item-section>Избранное</q-item-section>
           </q-item>
         </q-list>
@@ -77,7 +77,7 @@
 
     <q-page-container>
       <keep-alive>
-          <router-view />
+        <router-view />
       </keep-alive>
     </q-page-container>
 
@@ -88,18 +88,15 @@
           class="our_logo"
           src="~assets/Logo_white_wdt.png"
         />
-
         <a class="footer_ref" href="tel:+74999224710">+7 499 922-47-10</a>
-
         <a class="phone_with_text" href="tel:88007006841">8 800 700-68-41</a>
-
         <a class="footer_ref" href="email:support@geekbrains.ru"
           >support@sell.ru</a
         >
 
         <div class="q-mx-md">
           <q-btn class="footer_social">
-            <q-icon name="img:vk_icon.png" />
+            <q-icon name="img:vk_icon_w.png" />
           </q-btn>
           <q-btn class="footer_social">
             <q-icon name="img:youtube_icon.png" />
@@ -116,7 +113,7 @@
 <script>
 import { ref } from "vue";
 import { date } from "quasar";
-import ProductCatalog from 'components/ProductCatalog.vue'
+import ProductCatalog from "components/ProductCatalog.vue";
 
 export default {
   setup() {
@@ -128,8 +125,8 @@ export default {
       },
     };
   },
-  components:{
-    ProductCatalog
+  components: {
+    ProductCatalog,
   },
   computed: {
     dataTime() {
@@ -140,25 +137,25 @@ export default {
 };
 </script>
 <script setup>
- const counBascket = ref(0);
-    const putCount = (change) => {
-      console.log("Эмит получен")
-      counBascket.value = change
-      console.log(counBascket.value);
-    }
+const counBascket = ref(0);
+const putCount = (change) => {
+  console.log("Эмит получен");
+  counBascket.value = change;
+  console.log(counBascket.value);
+};
 </script>
 <style scoped>
 .notifications_icon {
   border-radius: 50%;
   width: 1vw;
-  background-color: rgb(236, 233, 233);
+  background-color: primary;
   margin-right: 6px;
   color: #fff;
 }
 
 .enter_btn,
 .registration_btn {
-  background-color: rgb(236, 233, 233);
+  background-color: primary;
   margin: 6px;
   color: #fff;
 }
@@ -195,7 +192,7 @@ export default {
   width: 30px;
   height: 30px;
   margin: 10px;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 @media (max-width: 420px) {
