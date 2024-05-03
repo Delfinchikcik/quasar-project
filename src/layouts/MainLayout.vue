@@ -10,21 +10,23 @@
           Quasar Магазин
         </q-toolbar-title>
         <div>
-          <q-btn class="notifications_icon" icon="notifications"></q-btn>
-          <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
+          <ProductCatalog  @sendCount="putCount" v-show="false"/>
+          <p>{{ counBascket }}</p>
+          <q-btn to="Shop" class="notifications_icon text-red" icon="local_grocery_store"></q-btn>
+          <q-btn to="/" class="enter_btn button is-primary" tag="a">Войти</q-btn>
           <q-btn to="RegistrationPage" class="registration_btn" tag="a"
-            >Регистрация</q-btn
+          >Регистрация</q-btn
           >
         </div>
       </q-toolbar>
     </q-header>
-
+    
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
+    v-model="leftDrawerOpen"
+    show-if-above
       :width="200"
       :breakpoint="450"
-    >
+      >
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
         <q-item clickable v-ripple to="/IndexPage" exact>
           <q-item-section avatar>
@@ -71,7 +73,7 @@
 
     <q-page-container>
       <keep-alive>
-        <router-view />
+          <router-view />
       </keep-alive>
     </q-page-container>
 
@@ -104,19 +106,22 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { date } from "quasar";
+import ProductCatalog from 'components/ProductCatalog.vue'
 
 export default {
   setup() {
     const leftDrawerOpen = ref(false);
-
     return {
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
     };
+  },
+  components:{
+    ProductCatalog
   },
   computed: {
     dataTime() {
@@ -125,6 +130,14 @@ export default {
     },
   },
 };
+</script>
+<script setup>
+ const counBascket = ref(0);
+    const putCount = (change) => {
+      console.log("Эмит получен")
+      counBascket.value = change
+      console.log(counBascket.value);
+    }
 </script>
 <style scoped>
 .notifications_icon {
