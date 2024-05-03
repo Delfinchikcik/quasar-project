@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-page class="fixed-bottom" style="position:relative/absolute;">
+    <q-page class="fixed-bottom" style="display: flex; top:555px; justify-content:right;">
       <div class="float-right">
         <q-dialog v-model="dialog" :position="position" class="float-right">
           <div class="q-pa-md row justify-center">
@@ -63,7 +63,7 @@
     </q-page>
             <div class="q-mt-sm">
               <div  class="row q-col-gutter-sm">
-              <div style="height: 50vh; z-index: -1;" class="col-lg-12 col-md-12 col-sm-11 col-xs-11">
+              <div style="height: 50vh;" class="col-lg-12 col-md-12 col-sm-11 col-xs-11">
                     <q-carousel
                     :class="$q.platform.is.desktop ? 'q-ml-sm' : ''"
                     height=100%
@@ -126,21 +126,24 @@
                   </div>
               </div>
               <div class="text-grey-9 text-weight-bold">
-                <div class="row items-center q-mx-sm">
-                  <div class="col-12 q-mt-sm">
-                    <div class="q-pl-md bg-white q-pt-sm">
-                    </div>
-                  </div>
-                </div>
-                <div class="row items-center q-mx-sm ">
+                 <div class="row items-center q-mx-sm ">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 q-mt-sm">
                     <div class="q-pl-md bg-white q-pt-sm">
-                    <span class="text-grey-9 text-h6 text-weight-bold">Популярные туры</span>
-                    <a class="text-primary q-ml-sm cursor-pointer">[читать далее]</a>
-
+                      <div style="display: flex; justify-content: center; align-items: center; height: 8vh;">
+                      <q-btn
+                        to="/ProductCatalog"
+                        class="enter_btn"
+                        tag="a"
+                        color="primary"
+                        glossy
+                        :class="{ 'text-white': $q.dark.isActive }"
+                      >
+                        Выбери приключения
+                      </q-btn>
+                    </div>
                     <div style="height: 40vh;" class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="gallery-5.jpg"
@@ -150,7 +153,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="hero-banner.jpg"
@@ -160,7 +163,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="gallery-7.jpg"
@@ -170,7 +173,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/#')"
+                        @click="$router.push('/ProductCatalog')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="Koktebel.jpg"
