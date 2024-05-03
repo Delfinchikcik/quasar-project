@@ -2,7 +2,6 @@
   <div>
     <q-page
       class="fixed-bottom"
-      style="display: flex; top: 555px; justify-content: right"
     >
       <div class="float-right">
         <q-dialog v-model="dialog" :position="position" class="float-right">
@@ -61,13 +60,18 @@
             </div>
           </div>
         </q-dialog>
-        <q-btn color="primary" icon-right="mail" @click="open('right')" />
+        <q-btn
+          style="position: fixed; bottom: 0; right: 0; z-index: 9999;"
+          color="primary"
+          icon-right="mail"
+          @click="open('right')"
+        />
       </div>
     </q-page>
     <div class="q-mt-sm">
       <div class="row q-col-gutter-sm">
         <div
-          style="height: 50vh"
+          style="height: 50vh;"
           class="col-lg-12 col-md-12 col-sm-11 col-xs-11"
         >
           <q-carousel
@@ -78,8 +82,7 @@
             v-model="slide"
             thumbnails
             infinite
-            :interval="4000"
-          >
+            :interval="4000">
             <q-carousel-slide
               class="rounded-borders"
               name="slide-1"
@@ -249,7 +252,7 @@ import { db } from "src/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 defineOptions({
-  name: "MainPage",
+  name: "IndexPage",
 });
 const dialog = ref(false);
 const position = ref("right");
