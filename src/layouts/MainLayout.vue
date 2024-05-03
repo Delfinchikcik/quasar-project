@@ -81,7 +81,7 @@
       </keep-alive>
     </q-page-container>
 
-    <q-footer elevated class="bg-blue text-white">
+    <q-footer elevated class="bg-blue text-white" style="z-index: -1;">
       <q-toolbar class="text-black row items-center justify-between">
         <img
           style="width: 2%; height: 2%"
@@ -94,7 +94,7 @@
           >support@sell.ru</a
         >
 
-        <div class="q-mx-md">
+        <div class="q-mx-md" style="transform: translateX(-50px);">
           <q-btn class="footer_social">
             <q-icon name="img:vk_icon_w.png" />
           </q-btn>
