@@ -75,7 +75,7 @@
 
     <q-footer elevated class="bg-blue text-white">
       <q-toolbar class="text-black row items-center justify-between">
-        <img class="our_logo" src="icons\favicon-128x128.png" />
+        <img style="width: 2%; height: 2%;" class="our_logo" src="~assets/Logo_white_wdt.png" />
 
         <a class="footer_ref" href="tel:+74999224710">+7 499 922-47-10</a>
 
