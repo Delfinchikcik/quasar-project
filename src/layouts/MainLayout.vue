@@ -11,7 +11,7 @@
         </q-toolbar-title>
         <div>
           <ProductCatalog @sendCount="putCount" v-show="false" />
-          <p>{{ counBascket }}</p>
+          <!-- <p>{{ counBascket }}</p> -->
           <q-btn
             to="Shop"
             class="notifications_icon"
