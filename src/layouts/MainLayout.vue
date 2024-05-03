@@ -1,3 +1,5 @@
+
+
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-white text-black">
@@ -49,7 +51,9 @@
               <q-icon name="list" />
             </q-item-section>
 
-            <q-item-section> Каталог товаров </q-item-section>
+            <q-item-section style="white-space: nowrap"
+              >Список приключений</q-item-section
+            >
           </q-item>
 
           <q-item clickable v-ripple to="/contacts" exact>
@@ -79,7 +83,11 @@
 
     <q-footer elevated class="bg-blue text-white">
       <q-toolbar class="text-black row items-center justify-between">
-        <img class="our_logo" src="icons\favicon-128x128.png" />
+        <img
+          style="width: 2%; height: 2%"
+          class="our_logo"
+          src="~assets/Logo_white_wdt.png"
+        />
 
         <a class="footer_ref" href="tel:+74999224710">+7 499 922-47-10</a>
 
@@ -145,12 +153,14 @@ export default {
   width: 1vw;
   background-color: rgb(236, 233, 233);
   margin-right: 6px;
+  color: #fff;
 }
 
 .enter_btn,
 .registration_btn {
   background-color: rgb(236, 233, 233);
   margin: 6px;
+  color: #fff;
 }
 
 .our_logo {
