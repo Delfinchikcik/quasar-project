@@ -10,7 +10,7 @@
         @click="() => favoritTogle(product)"
         round
         color="deep-orange"
-        icon="local_activity"
+        icon="star"
       />
       <div class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card" flat bordered>
@@ -20,6 +20,7 @@
             <div class="text-caption text-grey">
               {{ product.description }}
             </div>
+            <q-btn @click="handleBuyButtonClick(product)" class="bg-primary">Купить</q-btn>
           </q-card-section>
           <q-card-actions>
             <q-btn flat color="secondary" label="Забронировать" />
@@ -52,18 +53,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineEmits } from "vue";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
 import { db } from "../boot/firebase.js";
 
 const products = ref([]);
 const expanded = ref([]);
+const productCountInCart = ref(10)
 
-console.log("Initial products:", products.value);
 //Получение данных
 onMounted(async function () {
   try {
-    console.log("Получение данных из БД...");
     const querySnapshot = await getDocs(
       collection(db, "testProductsGroupProject")
     );
@@ -84,6 +84,7 @@ onMounted(async function () {
         duration: data.duration,
         group: data.group,
         favorit: data.favorit,
+        shop_add: data.shop_add,
       };
       products.value.push(product);
     });
@@ -106,6 +107,30 @@ const favoritTogle = async (productId) => {
     console.error("Error updating favorit status:", error);
   }
 };
+
+const addToCart = async (addProd) => {
+    const productRef = doc(db, "testProductsGroupProject", addProd.id);
+    const addCartValue = !addProd.shop_add;
+    try {
+      // Обновляем значение shop_add в документе Firestore
+      await updateDoc(productRef, { shop_add: addCartValue });
+      console.log("Shop_add status updated successfully");
+      const index = products.value.findIndex((p) => p.id === addProd.id);
+      products.value[index].shop_add = addCartValue;
+    } catch (error) {
+      console.error("Error updating shop_add status:", error);
+    }
+  };
+
+  const handleBuyButtonClick = (product) => {
+  addToCart(product);
+  countProductChange();
+}
+const emit = defineEmits(['sendCount'])
+  const countProductChange = () =>{
+    emit('sendCount', productCountInCart.value)
+    console.log('Эмит отправляется..', emit);
+  }
 </script>
 
 <style>

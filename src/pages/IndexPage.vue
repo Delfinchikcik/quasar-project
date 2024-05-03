@@ -129,18 +129,9 @@
                  <div class="row items-center q-mx-sm ">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 q-mt-sm">
                     <div class="q-pl-md bg-white q-pt-sm">
-                      <div style="display: flex; justify-content: center; align-items: center; height: 8vh;">
-                      <q-btn
-                        to="/ProductCatalog"
-                        class="enter_btn"
-                        tag="a"
-                        color="primary"
-                        glossy
-                        :class="{ 'text-white': $q.dark.isActive }"
-                      >
-                        Выбери приключения
-                      </q-btn>
-                    </div>
+                    <span class="text-grey-9 text-h6 text-weight-bold">Популярные туры</span>
+                    <a class="text-primary q-ml-sm cursor-pointer">[читать далее]</a>
+
                     <div style="height: 40vh;" class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                     <q-img
                         @click="$router.push('/ProductCatalog')"
@@ -153,7 +144,7 @@
                         </div>
                     </q-img>
                     <q-img
-                        @click="$router.push('/ProductCatalog')"
+                        @click="$router.push('/#')"
                         style="border: 1px solid lightgrey"
                         class="rounded-borders col-3 cursor-pointer full-height fluid"
                         src="hero-banner.jpg"
@@ -246,7 +237,7 @@ const sendMessage = () => {
 };
 </script>
 <script>
-import Vue from "vue";
+
 export default {
   data() {
     return {
