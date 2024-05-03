@@ -3,27 +3,25 @@
     <q-header elevated class="bg-white text-black">
       <q-toolbar class="toolbar bg-blue">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title>
+        <q-toolbar-title style="color: #fff">
           <q-avatar class="our_logo_header">
-            <img src="icons\favicon-128x128.png" />
+            <img src="~assets/Logo_white_wdt.png" />
           </q-avatar>
-          Quasar Магазин
+          Quasar Tours
         </q-toolbar-title>
         <div>
-          <ProductCatalog  @sendCount="putCount" v-show="false"/>
-          <p>{{ counBascket }}</p>
-          <q-btn to="Shop" class="notifications_icon text-red" icon="local_grocery_store"></q-btn>
-          <q-btn to="/" class="enter_btn button is-primary" tag="a">Войти</q-btn>
+          <q-btn class="notifications_icon" icon="notifications"></q-btn>
+          <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
           <q-btn to="RegistrationPage" class="registration_btn" tag="a"
-          >Регистрация</q-btn
+            >Регистрация</q-btn
           >
         </div>
       </q-toolbar>
     </q-header>
     
     <q-drawer
-    v-model="leftDrawerOpen"
-    show-if-above
+      v-model="leftDrawerOpen"
+      show-if-above
       :width="200"
       :breakpoint="450"
       >
@@ -46,10 +44,10 @@
 
           <q-item clickable v-ripple to="/ProductCatalog" exact>
             <q-item-section avatar>
-              <q-icon name="list" />
+              <q-icon name="map" />
             </q-item-section>
 
-            <q-item-section> Каталог товаров </q-item-section>
+            <q-item-section style="white-space: nowrap;">Список приключений</q-item-section>
           </q-item>
 
           <q-item clickable v-ripple to="/contacts" exact>
@@ -79,7 +77,7 @@
 
     <q-footer elevated class="bg-blue text-white">
       <q-toolbar class="text-black row items-center justify-between">
-        <img class="our_logo" src="icons\favicon-128x128.png" />
+        <img style="width: 2%; height: 2%;" class="our_logo" src="~assets/Logo_white_wdt.png" />
 
         <a class="footer_ref" href="tel:+74999224710">+7 499 922-47-10</a>
 
@@ -91,7 +89,7 @@
 
         <div class="q-mx-md">
           <q-btn class="footer_social">
-            <q-icon name="img:vk_icon.png" />
+            <q-icon name="img:vk_icon_w.png" />
           </q-btn>
           <q-btn class="footer_social">
             <q-icon name="img:youtube_icon.png" />
@@ -143,14 +141,16 @@ export default {
 .notifications_icon {
   border-radius: 50%;
   width: 1vw;
-  background-color: rgb(236, 233, 233);
+  background-color: primary;
   margin-right: 6px;
+  color: white
 }
 
 .enter_btn,
 .registration_btn {
-  background-color: rgb(236, 233, 233);
+  background-color: primary;
   margin: 6px;
+  color: white
 }
 
 .our_logo {
@@ -185,7 +185,7 @@ export default {
   width: 30px;
   height: 30px;
   margin: 10px;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 @media (max-width: 420px) {
