@@ -1,17 +1,7 @@
 <template>
   <div class="product-catalog">
-    <q-card
-      class="product-list relative q-my-md"
-      v-for="(product, index) in products"
-      :key="product.id"
-    >
-      <q-btn
-        class="favoritIcon"
-        @click="() => favoritTogle(product)"
-        round
-        color="deep-orange"
-        icon="local_activity"
-      />
+    <q-card class="product-list relative q-my-md" v-for="(product, index) in products" :key="product.id">
+      <q-btn class="favoritIcon" @click="() => favoritTogle(product)" round color="deep-orange" icon="local_activity" />
       <div class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card" flat bordered>
           <q-img src="" />
@@ -24,17 +14,8 @@
           <q-card-actions>
             <q-btn flat color="secondary" label="Забронировать" />
             <q-space />
-            <q-btn
-              label="Подробнее"
-              color="grey"
-              round
-              flat
-              dense
-              :icon="
-                expanded[index] ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
-              "
-              @click="expanded[index] = !expanded[index]"
-            />
+            <q-btn label="Подробнее" color="grey" round flat dense :icon="expanded[index] ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+              " @click="expanded[index] = !expanded[index]" />
           </q-card-actions>
           <transition-group>
             <div key="more-info" v-show="expanded[index]">
@@ -54,7 +35,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import { db } from "../boot/firebase.js";
+import { db } from "src/firebase";
 
 defineOptions({
   name: "FavoritePage",

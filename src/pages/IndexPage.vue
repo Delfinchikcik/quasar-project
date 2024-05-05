@@ -330,14 +330,17 @@ export default {
   height: 2em;
   width: 2em;
 }
+
 .input_area {
   border-radius: 20px;
   background-color: #726f6f;
 }
+
 .chat_container {
   background-color: #bc9ae7;
   border-radius: 24px;
 }
+
 .chat_header {
   text-align: center;
   font-size: 28px;
@@ -363,19 +366,24 @@ export default {
 .shake {
   animation: shake 0.3s;
 }
+
 @keyframes shake {
   0% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-5px);
   }
+
   50% {
     transform: translateX(5px);
   }
+
   75% {
     transform: translateX(-5px);
   }
+
   100% {
     transform: translateX(0);
   }
