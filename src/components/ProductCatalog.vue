@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <q-card class="product-card" v-for="product in productsList" :key="product.id">
       <img src="">
       <q-card-section>
