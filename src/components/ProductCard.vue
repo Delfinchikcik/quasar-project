@@ -1,34 +1,45 @@
 <template>
-    <q-card class="product-card">
-        <img src="">
-
-        <q-card-section>
-            <div class="text-h6">{{ products.name }}</div>
-            <div class="text-subtitle2">{{ products.price }}</div>
-        </q-card-section>
-
-        <q-card-section class="q-pt-none">
-            {{ lorem }}
-        </q-card-section>
+   <div class="product-catalog">
+    <q-card class="product-list relative q-my-md" v-for="product in props.productsList" :key="product.id">
+      <q-btn class="favoritIcon" @click="() => favoritTogle(product)" round color="deep-orange" icon="local_activity" />
+      <div class="q-pa-md row items-start q-gutter-md">
+        <q-card class="my-card" flat bordered>
+          <q-img src="" />
+          <q-card-section>
+            <div class="text-h5 q-mt-sm q-mb-xs">{{ product.name }}</div>
+            <div class="text-caption text-grey">
+              {{ product.description }}
+            </div>
+          </q-card-section>
+          <q-card-actions>
+            <q-btn flat color="secondary" label="Забронировать" />
+            <q-space />
+            <q-btn label="Подробнее" color="grey" round flat dense :icon="expanded[index] ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+              " @click="expanded[index] = !expanded[index]" />
+          </q-card-actions>
+          <transition-group>
+            <div key="more-info" v-show="expanded[index]">
+              <q-separator />
+              <q-card-section key="more-info-sections" class="text-subtitle2">
+                <p key="group">{{ product.group }}</p>
+                <p key="duration">{{ product.duration }}</p>
+              </q-card-section>
+            </div>
+          </transition-group>
+        </q-card>
+      </div>
     </q-card>
+  </div>
 </template>
 
 <script setup>
-import { watch } from 'vue';
-import { useQuery } from '@vue/apollo-composable';
-import { useProductsStore } from 'src/stores/products';
-import { GET_PRODUCTS } from 'src/queries/getProducts'
+import {defineProps, ref} from 'vue'
 
-
-const products = useProductsStore();
-const { result, loading, error } = useQuery(GET_PRODUCTS);
-
-watch(loading, (value) => {
-    if (!value) {
-        products.setProducts(result.value?.products);
-        console.log(result.value)
-        const productsData = result.value?.products;
-        emit('productsUpdated', productsData);
+const expanded = ref([]);
+const props = defineProps({
+    productsList: {
+        type: Array,
+        required: true
     }
 })
 </script>

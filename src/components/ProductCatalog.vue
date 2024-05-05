@@ -1,38 +1,33 @@
 <template>
-  <div>
-    <q-card class="product-card" v-for="product in productsList" :key="product.id">
-      <img src="">
-      <q-card-section>
-        <div class="text-h6">{{ product.name }}</div>
-        <div class="text-subtitle2">{{ product.price }}</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        {{ product.description }}
-      </q-card-section>
-    </q-card>
-  </div>
+  <ProductCard
+    :productsList="productsList"
+  />
 </template>
 
 <script setup>
-import { watch } from 'vue';
-import { useQuery } from '@vue/apollo-composable';
-import { useProductsStore } from 'src/stores/products';
-import { GET_PRODUCTS } from 'src/queries/getProducts'
+import { watch, defineComponent } from "vue";
+import { useQuery } from "@vue/apollo-composable";
+import { useProductsStore } from "src/stores/products";
+import { GET_PRODUCTS } from "src/queries/getProducts";
+import ProductCard from "./ProductCard.vue";
 
-
+defineComponent({
+  name: "ProductCatalog",
+  components: {
+    ProductCard,
+  },
+});
 const products = useProductsStore();
 const { result, loading, error } = useQuery(GET_PRODUCTS);
+const productsList = products.products;
 
 watch(loading, (value) => {
   if (!value) {
     products.setProducts(result.value?.products);
-    console.log(result.value)
+    console.log(result.value);
   }
-})
-const productsList = products.products;
+});
 </script>
-
 
 <style>
 .product-catalog__searchbar__input {
