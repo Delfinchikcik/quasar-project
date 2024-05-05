@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-card class="product-card" v-for="product in products" :key="product.id">
+    <q-card class="product-card" v-for="product in result.products" :key="product.id">
       <img src="">
       <q-card-section>
         <div class="text-h6">{{ product.name }}</div>
