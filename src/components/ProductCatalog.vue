@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-card class="product-card" v-for="product in result.products" :key="product.id">
+    <q-card class="product-card" v-for="product in productsList" :key="product.id">
       <img src="">
       <q-card-section>
         <div class="text-h6">{{ product.name }}</div>
@@ -30,6 +30,7 @@ watch(loading, (value) => {
     console.log(result.value)
   }
 })
+const productsList = products.products;
 </script>
 
 
