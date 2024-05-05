@@ -1,16 +1,17 @@
 <template>
-    <q-card class="product-card">
-        <img src="">
+    <div>
+        <q-card class="product-card">
+            <img src="">
+            <q-card-section>
+                <div class="text-h6">{{ product.name }}</div>
+                <div class="text-subtitle2">{{ product.price }}</div>
+            </q-card-section>
 
-        <q-card-section>
-            <div class="text-h6">{{ products.name }}</div>
-            <div class="text-subtitle2">{{ products.price }}</div>
-        </q-card-section>
-
-        <q-card-section class="q-pt-none">
-            {{ lorem }}
-        </q-card-section>
-    </q-card>
+            <q-card-section class="q-pt-none">
+                {{ product.description }}
+            </q-card-section>
+        </q-card>
+    </div>
 </template>
 
 <script setup>
@@ -27,10 +28,9 @@ watch(loading, (value) => {
     if (!value) {
         products.setProducts(result.value?.products);
         console.log(result.value)
-        const productsData = result.value?.products;
-        emit('productsUpdated', productsData);
     }
 })
+const productsList = products.products;
 </script>
 
 <style>
