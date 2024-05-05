@@ -16,7 +16,7 @@
     "@apollo/client": "^3.8.6",
     "@quasar/cli": "^2.4.1",
     "@quasar/extras": "^1.16.4",
-    "@vue/apollo-composable": "^4.0.0",
+    "@vue/apollo-composable": "^4.0.2",
     "@vue/apollo-option": "^4.0.0",
     "axios": "^1.2.1",
     "bulma": "^1.0.0",
