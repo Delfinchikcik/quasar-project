@@ -1,34 +1,37 @@
-
-
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-white text-black">
       <q-toolbar class="toolbar bg-blue">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title>
+        <q-toolbar-title class="text-white">
           <q-avatar class="our_logo_header">
             <img src="icons\favicon-128x128.png" />
           </q-avatar>
-          Quasar Магазин
+         Quasar Магазин 
         </q-toolbar-title>
         <div>
-          <ProductCatalog  @sendCount="putCount" v-show="false"/>
           <p>{{ counBascket }}</p>
-          <q-btn to="Shop" class="notifications_icon text-red" icon="local_grocery_store"></q-btn>
-          <q-btn to="/" class="enter_btn button is-primary" tag="a">Войти</q-btn>
+          <q-btn
+            to="Shop"
+            class="notifications_icon text-red"
+            icon="local_grocery_store"
+          ></q-btn>
+          <q-btn to="/" class="enter_btn button is-primary" tag="a"
+            >Войти</q-btn
+          >
           <q-btn to="RegistrationPage" class="registration_btn" tag="a"
             >Регистрация</q-btn
           >
         </div>
       </q-toolbar>
     </q-header>
-    
+
     <q-drawer
-    v-model="leftDrawerOpen"
-    show-if-above
+      v-model="leftDrawerOpen"
+      show-if-above
       :width="200"
       :breakpoint="450"
-      >
+    >
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
         <q-item clickable v-ripple to="/IndexPage" exact>
           <q-item-section avatar>
@@ -77,7 +80,7 @@
 
     <q-page-container>
       <keep-alive>
-          <router-view />
+        <router-view />
       </keep-alive>
     </q-page-container>
 
@@ -99,7 +102,7 @@
 
         <div class="q-mx-md">
           <q-btn class="footer_social">
-            <q-icon name="img:vk_icon.png" />
+            <q-icon name="img:vk_icon.png"/>
           </q-btn>
           <q-btn class="footer_social">
             <q-icon name="img:youtube_icon.png" />
@@ -116,11 +119,10 @@
 <script>
 import { ref } from "vue";
 import { date } from "quasar";
-import ProductCatalog from 'components/ProductCatalog.vue'
 
 export default {
   setup() {
-    const leftDrawerOpen = ref(false);
+    const leftDrawerOpen = ref(true);
     return {
       leftDrawerOpen,
       toggleLeftDrawer() {
@@ -136,14 +138,7 @@ export default {
   },
 };
 </script>
-<script setup>
- const counBascket = ref(0);
-    const putCount = (change) => {
-      console.log("Эмит получен")
-      counBascket.value = change
-      console.log(counBascket.value);
-    }
-</script>
+
 <style scoped>
 .notifications_icon {
   border-radius: 50%;
@@ -155,7 +150,7 @@ export default {
 
 .enter_btn,
 .registration_btn {
-  background-color: rgb(236, 233, 233);
+  background-color: rgb(54, 148, 255);
   margin: 6px;
   color: #fff;
 }
@@ -192,7 +187,7 @@ export default {
   width: 30px;
   height: 30px;
   margin: 10px;
-  background-color: #fff;
+  background-color: #218ff7;
 }
 
 @media (max-width: 420px) {

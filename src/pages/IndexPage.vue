@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <q-page
+  <div class="wrapper_index">
+    <div
       class="fixed-bottom"
       style="display: flex; top: 555px; justify-content: right"
     >
@@ -61,9 +61,9 @@
             </div>
           </div>
         </q-dialog>
-        <q-btn color="primary" icon-right="mail" @click="open('right')" />
       </div>
-    </q-page>
+    </div>
+    <q-btn class="chat_icon" color="primary" icon-right="mail" @click="open('right')" />
     <div class="q-mt-sm">
       <div class="row q-col-gutter-sm">
         <div
@@ -188,7 +188,7 @@
               </div>
               <div
                 style="height: 40vh"
-                class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+                class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap foto_gelery"
               >
                 <q-img
                   @click="$router.push('/ProductCatalog')"
@@ -345,6 +345,20 @@ export default {
   background-color: #826ba0;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
+}
+.wrapper_index{
+  max-width: 80vw;
+  margin: 0 auto;
+  z-index: 0;
+}
+.chat_icon{
+  position: fixed;
+  bottom: 14vh;
+  right: 2vw;
+  z-index: 2;
+  width: 4vw;
+  height: 2vw;
+  box-shadow: 5px 5px 3px 3px rgb(163, 209, 240);
 }
 .shake {
   animation: shake 0.3s;
