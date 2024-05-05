@@ -10,7 +10,7 @@ export const GET_PRODUCTS = gql`
       description
       destination
       duration
-      favorit
+      favourite
       group
       images
       name
