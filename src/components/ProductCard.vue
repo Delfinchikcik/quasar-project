@@ -1,85 +1,36 @@
 <template>
-    <div class="product-catalog">
-        <q-card class="product-list relative q-my-md">
-            <q-btn class="favoritIcon" @click="() => favoritTogle(product)" round color="deep-orange"
-                icon="local_activity" />
-            <div class="q-pa-md row items-start q-gutter-md">
-                <q-card class="my-card" flat bordered>
-                    <!-- <div class="q-pa-md">
-                        <q-carousel animated v-model="slide" arrows navigation infinite>
-                            <q-carousel-slide v-for="(image, index) in product.image" :key="index" :name="index + 1"
-                                :img-src="image" />
-                        </q-carousel>
-                    </div> -->
-                    <q-card-section>
-                        <div class="text-h5 q-mt-sm q-mb-xs">{{ product.name }}</div>
-                        <div class="text-h5 q-mt-sm q-mb-xs">{{ product.price }}</div>
-                        <div class="text-caption text-grey">
-                            {{ product.description }}
-                        </div>
-                    </q-card-section>
-                    <q-card-actions>
-                        <q-btn flat color="secondary" label="Забронировать" />
-                        <q-space />
-                        <q-btn label="Подробнее" color="grey" round flat dense :icon="expanded[index] ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
-                            " @click="expanded[index] = !expanded[index]" />
-                    </q-card-actions>
-                </q-card>
-            </div>
-        </q-card>
-    </div>
+    <q-card class="product-card">
+        <img src="">
+
+        <q-card-section>
+            <div class="text-h6">{{ products.name }}</div>
+            <div class="text-subtitle2">{{ products.price }}</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+            {{ lorem }}
+        </q-card-section>
+    </q-card>
 </template>
 
 <script setup>
-import { ref, onMounted, defineEmits } from 'vue';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from "src/firebase";
-// тянем инфу из firebase
-const products = ref([]);
-const slide = ref(1);
+import { watch } from 'vue';
+import { useQuery } from '@vue/apollo-composable';
+import { useProductsStore } from 'src/stores/products';
+import { GET_PRODUCTS } from 'src/queries/getProducts'
 
 
-onMounted(async () => {
-    try {
-        const querySnapshot = await getDocs(collection(db, "testProductsGroupProject"));
-        products.value = [];
-        querySnapshot.forEach((doc) => {
-            const data = doc.data() || {};
-            const product = {
-                id: doc.id,
-                available: data.available,
-                type: data.type,
-                description: data.description,
-                image: data.images,
-                name: data.name,
-                price: data.price,
-                destination: data.destination,
-                duration: data.duration,
-                group: data.group,
-                favorit: data.favorit,
-            };
-            products.value.push(product);
-        });
-    } catch (error) {
-        console.error("Error fetching data:", error);
+const products = useProductsStore();
+const { result, loading, error } = useQuery(GET_PRODUCTS);
+
+watch(loading, (value) => {
+    if (!value) {
+        products.setProducts(result.value?.products);
+        console.log(result.value)
+        const productsData = result.value?.products;
+        emit('productsUpdated', productsData);
     }
-});
-
-//Реализация Избранного
-const favoritTogle = async (productId) => {
-    const productRef = doc(db, "testProductsGroupProject", productId.id);
-    const newFavoritValue = !productId.favorit;
-    try {
-        // Обновляем значение favorit в документе Firestore
-        await updateDoc(productRef, { favorit: newFavoritValue });
-        console.log("Favorit status updated successfully");
-        const index = products.value.findIndex((p) => p.id === productId.id);
-        products.value[index].favorit = newFavoritValue;
-    } catch (error) {
-        console.error("Error updating favorit status:", error);
-    }
-};
-
+})
 </script>
 
 <style>
