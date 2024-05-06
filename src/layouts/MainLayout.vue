@@ -226,22 +226,6 @@ export default {
 </script>
 
 <script setup>
-// Импортируем переменную состояния cartItems из компонента MyCard.vue
-//import { cartItems } from '../pages/MyCard.vue';
-
-// Метод для обновления счетчика корзины
-// const updateCartCounter = (count) => {
-//   cartCounter.value = count;
-// }
-
-// // Метод для удаления элемента из корзины
-// const removeFromCart = (index) => {
-//   cartItems.value.splice(index, 1);
-//   saveCartItems(); // Сохраняем обновленную корзину в локальное хранилище
-//   // Вызываем событие для оповещения верхнего меню о изменении корзины
-//   emit('cartUpdated', cartItems.value.length);
-// }
-// Состояние счетчика корзины
 const cartCounter = ref(0);
 
 // Подписываемся на событие обновления корзины из MyCard.vue
@@ -250,32 +234,6 @@ const onCartUpdated = (count) => {
   };
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <script setup>
-const counBascket = ref(0);
-const putCount = (change) => {
-  console.log("Эмит получен");
-  counBascket.value = change;
-  console.log(counBascket.value);
-};
-</script> -->
-<style>
-/* Задаем ширину поля поиска */
-.search-input {
-  max-width: 100%; /* Измените значение в соответствии с вашими требованиями */
-}
-</style>
 <style scoped>
 .notifications_icon {
   border-radius: 50%;

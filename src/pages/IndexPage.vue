@@ -187,7 +187,7 @@
             >
               <div class="q-col-gutter row items-start q-gutter-md">
                 <div
-                  class="q-col-xs-12 q-col-sm-6 q-col-md-4 q-col-lg-3"
+                class="q-pa-xs col-xs-12 col-sm-8 col-md-2"
                   v-for="(event, index) in events"
                   :key="index"
                 >
@@ -229,7 +229,7 @@
                     <q-separator />
 
                     <q-card-actions>
-              
+
                     </q-card-actions>
                   </q-card>
                 </div>
