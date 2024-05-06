@@ -1,33 +1,51 @@
+<!-- MainLayout.vue -->
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-white text-black">
-      <q-toolbar class="toolbar bg-blue">
-        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title style="color: #fff">
-          <q-avatar class="our_logo_header">
-            <img src="~assets/Logo_white_wdt.png" />
-          </q-avatar>
-          Quasar Tours
-        </q-toolbar-title>
-        <div>
-          <ProductCatalog @sendCount="putCount" v-show="false" />
-          <!-- <p>{{ counBascket }}</p> -->
-          <q-btn
-            to="Shop"
-            class="notifications_icon"
-            icon="local_grocery_store"
-          ></q-btn>
-          <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
-          <q-btn to="RegistrationPage" class="registration_btn" tag="a"
-            >Регистрация</q-btn>
-        </div>
-      </q-toolbar>
+      <div class="col-sm-12 col-xs-12">
+        <q-toolbar class="toolbar bg-blue">
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+          <!-- <q-btn dense flat round icon="menu" @click="console.log('Button clicked')" /> -->
+
+          <q-toolbar-title style="color: #fff" class="col-xs">
+            <q-avatar class="our_logo_header">
+              <img src="~assets/Logo_white_wdt.png" />
+            </q-avatar>
+            Quasar Tours
+          </q-toolbar-title>
+          <!-- Корзина, настройки и выход -->
+          <div class="q-col q-col-gutter justify-end">
+            <q-btn
+              class="q-mr-md"
+              color="white"
+              dense
+              round
+              flat
+              icon="shopping_cart"
+              to="/MyCard"
+            >
+              <q-badge color="red" class="text-bold" floating transparent>
+                {{ cartCounter }}
+              </q-badge>
+            </q-btn>
+            <q-btn
+              flat
+              round
+              dense
+              icon="settings"
+              color="white"
+              class="q-mr-md"
+            />
+            <q-btn flat round dense icon="exit_to_app" color="white" to="/" />
+          </div>
+        </q-toolbar>
+      </div>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      :width="200"
+      :width="250"
       :breakpoint="450"
     >
       <q-scroll-area style="height: calc(100%); border-right: 1px solid #ddd">
@@ -35,15 +53,14 @@
           <q-item-section avatar>
             <q-icon name="computer" />
           </q-item-section>
-
           <q-item-section>Главная страница</q-item-section>
         </q-item>
+
         <q-list padding>
-          <q-item clickable v-ripple to="/My_profile" exact>
+          <q-item clickable v-ripple to="/MyProfile" exact>
             <q-item-section avatar>
               <q-icon name="account_circle" />
             </q-item-section>
-
             <q-item-section> Профиль </q-item-section>
           </q-item>
 
@@ -51,7 +68,6 @@
             <q-item-section avatar>
               <q-icon name="map" />
             </q-item-section>
-
             <q-item-section style="white-space: nowrap"
               >Список приключений</q-item-section
             >
@@ -61,7 +77,6 @@
             <q-item-section avatar>
               <q-icon name="contacts" />
             </q-item-section>
-
             <q-item-section>Контакты</q-item-section>
           </q-item>
 
@@ -71,9 +86,25 @@
             </q-item-section>
             <q-item-section>Избранное</q-item-section>
           </q-item>
+
+          <q-item clickable v-ripple to="/SearchPage" exact>
+            <q-item-section avatar>
+              <q-icon name="list" />
+            </q-item-section>
+            <q-item-section>Поиск</q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple to="/MyCard" exact>
+            <q-item-section avatar>
+              <q-icon name="shopping_cart" />
+            </q-item-section>
+            <q-item-section>Корзина</q-item-section>
+          </q-item>
+
         </q-list>
       </q-scroll-area>
     </q-drawer>
+
 
     <q-page-container>
       <keep-alive>
@@ -81,7 +112,11 @@
       </keep-alive>
     </q-page-container>
 
-    <q-footer elevated class="bg-blue text-white" style="z-index: -1;">
+    <q-footer
+      elevated
+      class="bg-blue text-white"
+      style="min-height: fit-content"
+    >
       <q-toolbar class="text-black row items-center justify-between">
         <img
           style="width: 2%; height: 2%"
@@ -94,7 +129,7 @@
           >support@sell.ru</a
         >
 
-        <div class="q-mx-md" style="transform: translateX(-50px);">
+        <div class="q-mx-md" style="transform: translateX(-50px)">
           <q-btn class="footer_social">
             <q-icon name="img:vk_icon_w.png" />
           </q-btn>
@@ -110,24 +145,77 @@
   </q-layout>
 </template>
 
+<!-- MainLayout.vue -->
 <script>
-import { ref } from "vue";
+import MyCard from '../pages/MyCard.vue'; // Путь к компоненту MyCard
+import { ref, onMounted, watch } from "vue";
 import { date } from "quasar";
 import ProductCatalog from "components/ProductCatalog.vue";
 
 export default {
   setup() {
+    // Логика для левого выдвижного menu
     const leftDrawerOpen = ref(false);
+    const toggleLeftDrawer = () => {
+      console.log("Toggle Left Drawer"); // Проверка работы гамбургера показала на то что оно не сворачивается из-за stars
+      leftDrawerOpen.value = !leftDrawerOpen.value;
+    };
+
+    // Логика для экскурсий и поиска
+    const excursions = ref([]); // массив экскурсий
+    const filteredExcursions = ref([]); // отфильтрованные экскурсии
+    const searchQuery = ref(""); // поисковый запрос
+
+    // Метод для фильтрации экскурсий по поисковому запросу
+    const filterExcursions = () => {
+      // Поиск по JSON файлу
+      const filtered = excursions.value.filter((excursion) => {
+        // Для примера предположим, что вам нужно искать по названию экскурсии
+        return excursion.title
+          .toLowerCase()
+          .includes(searchQuery.value.toLowerCase());
+      });
+      // Обновление списка экскурсий на главной странице
+      filteredExcursions.value = filtered;
+    };
+
+    // Метод для обработки введенного поискового запроса
+    const handleSearch = () => {
+      filterExcursions();
+    };
+
+    // Метод для загрузки данных о экскурсиях
+    const loadExcursions = async () => {
+      try {
+        const response = await fetch("/events.json"); // Загрузка данных о экскурсиях из JSON файла
+        const data = await response.json(); // Преобразование ответа в JSON формат
+        excursions.value = data; // Обновление данных экскурсий
+      } catch (error) {
+        console.error("Ошибка при загрузке данных экскурсий:", error);
+      }
+    };
+
+    // Загрузка данных о экскурсиях при монтировании компонента
+    onMounted(() => {
+      loadExcursions();
+    });
+
+    // Вызов метода фильтрации экскурсий при изменении searchQuery
+    watch(searchQuery, () => {
+      filterExcursions();
+    });
     return {
       leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
+      toggleLeftDrawer,
+      excursions,
+      filteredExcursions,
+      searchQuery,
+      handleSearch,
     };
   },
-  components: {
-    ProductCatalog,
-  },
+  // components: {
+  //   ProductCatalog,
+  // },
   computed: {
     dataTime() {
       const timeStamp = Date.now();
@@ -136,14 +224,58 @@ export default {
   },
 };
 </script>
+
 <script setup>
+// Импортируем переменную состояния cartItems из компонента MyCard.vue
+//import { cartItems } from '../pages/MyCard.vue';
+
+// Метод для обновления счетчика корзины
+// const updateCartCounter = (count) => {
+//   cartCounter.value = count;
+// }
+
+// // Метод для удаления элемента из корзины
+// const removeFromCart = (index) => {
+//   cartItems.value.splice(index, 1);
+//   saveCartItems(); // Сохраняем обновленную корзину в локальное хранилище
+//   // Вызываем событие для оповещения верхнего меню о изменении корзины
+//   emit('cartUpdated', cartItems.value.length);
+// }
+// Состояние счетчика корзины
+const cartCounter = ref(0);
+
+// Подписываемся на событие обновления корзины из MyCard.vue
+const onCartUpdated = (count) => {
+  cartCounter.value = count;
+  };
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script setup>
 const counBascket = ref(0);
 const putCount = (change) => {
   console.log("Эмит получен");
   counBascket.value = change;
   console.log(counBascket.value);
 };
-</script>
+</script> -->
+<style>
+/* Задаем ширину поля поиска */
+.search-input {
+  max-width: 100%; /* Измените значение в соответствии с вашими требованиями */
+}
+</style>
 <style scoped>
 .notifications_icon {
   border-radius: 50%;
