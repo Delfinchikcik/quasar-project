@@ -1,7 +1,7 @@
 <template>
    <div class="product-catalog">
-    <q-card class="product-list relative q-my-md" v-for="product in props.productsList" :key="product.id">
-      <q-btn class="favoritIcon" @click="() => favoritTogle(product)" round color="deep-orange" icon="local_activity" />
+    <q-card class="product-list relative q-my-md" v-for="(product, index,) in props.productsList" :key="product.id">
+      <q-btn class="favoritIcon" @click="favoritTogle(uuid, product.name)" round color="deep-orange" icon="local_activity" />
       <div class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card" flat bordered>
           <q-img src="" />
@@ -33,15 +33,24 @@
 </template>
 
 <script setup>
-import {defineProps, ref} from 'vue'
+import {defineProps, ref, defineEmits} from 'vue'
+
+const uuid = '1ef4a1d2-1bf2-4c81-b279-a7ca641175ac'
 
 const expanded = ref([]);
 const props = defineProps({
     productsList: {
         type: Array,
         required: true
-    }
+    },
 })
+const emit = defineEmits(['favoritTogle'])
+
+const favoritTogle = (userId, productName) => {
+  emit('favoritTogle', userId, productName);
+  console.log(userId, productName);
+};
+
 </script>
 
 <style>

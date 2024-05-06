@@ -10,7 +10,6 @@
          Quasar Магазин 
         </q-toolbar-title>
         <div>
-          <p>{{ counBascket }}</p>
           <q-btn
             to="Shop"
             class="notifications_icon text-red"
