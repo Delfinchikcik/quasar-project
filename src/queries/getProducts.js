@@ -10,13 +10,17 @@ export const GET_PRODUCTS = gql`
       description
       destination
       duration
-      favorit
+      favourite
       group
-      images
       name
       price
       shop_add
       type
+      img_1
+      img_2
+      img_3
+      img_4
+      img_5
     }
   }
 `;

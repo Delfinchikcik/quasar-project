@@ -3,15 +3,22 @@
     <q-header elevated class="bg-white text-black">
       <q-toolbar class="toolbar bg-blue">
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-        <q-toolbar-title>
+        <q-toolbar-title class="text-white">
           <q-avatar class="our_logo_header">
             <img src="icons\favicon-128x128.png" />
           </q-avatar>
-          Quasar Магазин
+         Quasar Магазин 
         </q-toolbar-title>
         <div>
-          <q-btn class="notifications_icon" icon="notifications"></q-btn>
-          <q-btn to="/" class="enter_btn" tag="a">Войти</q-btn>
+          <p>{{ counBascket }}</p>
+          <q-btn
+            to="Shop"
+            class="notifications_icon text-red"
+            icon="local_grocery_store"
+          ></q-btn>
+          <q-btn to="/" class="enter_btn button is-primary" tag="a"
+            >Войти</q-btn
+          >
           <q-btn to="RegistrationPage" class="registration_btn" tag="a"
             >Регистрация</q-btn
           >
@@ -47,7 +54,9 @@
               <q-icon name="list" />
             </q-item-section>
 
-            <q-item-section> Каталог товаров </q-item-section>
+            <q-item-section style="white-space: nowrap"
+              >Список приключений</q-item-section
+            >
           </q-item>
 
           <q-item clickable v-ripple to="/contacts" exact>
@@ -77,7 +86,11 @@
 
     <q-footer elevated class="bg-blue text-white">
       <q-toolbar class="text-black row items-center justify-between">
-        <img class="our_logo" src="icons\favicon-128x128.png" />
+        <img
+          style="width: 2%; height: 2%"
+          class="our_logo"
+          src="~assets/Logo_white_wdt.png"
+        />
 
         <a class="footer_ref" href="tel:+74999224710">+7 499 922-47-10</a>
 
@@ -89,7 +102,7 @@
 
         <div class="q-mx-md">
           <q-btn class="footer_social">
-            <q-icon name="img:vk_icon.png" />
+            <q-icon name="img:vk_icon.png"/>
           </q-btn>
           <q-btn class="footer_social">
             <q-icon name="img:youtube_icon.png" />
@@ -104,13 +117,12 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { date } from "quasar";
 
 export default {
   setup() {
-    const leftDrawerOpen = ref(false);
-
+    const leftDrawerOpen = ref(true);
     return {
       leftDrawerOpen,
       toggleLeftDrawer() {
@@ -126,18 +138,21 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .notifications_icon {
   border-radius: 50%;
   width: 1vw;
   background-color: rgb(236, 233, 233);
   margin-right: 6px;
+  color: #fff;
 }
 
 .enter_btn,
 .registration_btn {
-  background-color: rgb(236, 233, 233);
+  background-color: rgb(54, 148, 255);
   margin: 6px;
+  color: #fff;
 }
 
 .our_logo {
@@ -172,7 +187,7 @@ export default {
   width: 30px;
   height: 30px;
   margin: 10px;
-  background-color: #fff;
+  background-color: #218ff7;
 }
 
 @media (max-width: 420px) {

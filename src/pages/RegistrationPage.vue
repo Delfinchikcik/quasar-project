@@ -10,7 +10,7 @@
               <div><img src="/gallery-2.jpg" style="width: 100%"/></div>
               <div class="text-weight-bolder text-white text-h6">Quasar Магазин</div>
               <div class="text-caption text-white">Команды WebDreamTeam 1T</div>
-              <div><img src="~assets/Logo_white_wdt.png" style="width: 23%"/></div>
+              <div><img src="~assets/Logo_white_wdt.png" tag="a" style="width: 23%"/></div>
             </div>
           </q-card-section>
           <q-card-section class="col-md-8 col-lg-8 col-sm-12 sol-xs-12 float-left">

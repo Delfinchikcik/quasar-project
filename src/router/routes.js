@@ -10,7 +10,8 @@ const routes = [
       { path: '/my_profile', component: () => import('src/pages/my_profile.vue')},
       {path: '/ProductCatalog', component: () => import('components/ProductCatalog')},
       {path: '/Favorite', component: () => import('src/pages/Favorite.vue')},
-      {path: '/ProductCard', component: () => import('components/ProductCard')}
+      {path: '/ProductCard', component: () => import('components/ProductCard')},
+      {path: '/Shop', component: () => import('src/components/Shop.vue')}
     ],
   },
 
