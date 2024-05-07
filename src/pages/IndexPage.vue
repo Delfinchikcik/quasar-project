@@ -229,7 +229,7 @@
                     <q-separator />
 
                     <q-card-actions>
-
+                      <q-btn @click="handleBuyButtonClick(product)" class="bg-primary">Купить</q-btn>
                     </q-card-actions>
                   </q-card>
                 </div>
