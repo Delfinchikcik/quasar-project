@@ -1,29 +1,44 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
-    <div>
-      <div style="font-size: 30vh">
-        404
-      </div>
-
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
-      </div>
-
+  <div class="container">
+    <img
+      src="~assets/image.png"
+      class="background-image"
+    >
+    <div class="content fixed-center text-center">
+      <p class="text-h4 text-white">Извените, выберите другой тур...<strong class="text-warning">(404)</strong></p>
       <q-btn
-        class="q-mt-xl"
-        color="white"
-        text-color="blue"
-        unelevated
-        to="/"
-        label="Go Home"
-        no-caps
+        color="primary"
+        style="width: 200px;"
+        to="/IndexPage"
+        class="q-mt-md"
+        label="Вернуться назад"
       />
     </div>
   </div>
 </template>
 
-<script setup>
-defineOptions({
-  name: 'ErrorNotFound'
-});
-</script>
+<style>
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5); /* Уменьшение яркости изображения */
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
