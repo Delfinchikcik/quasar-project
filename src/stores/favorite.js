@@ -23,5 +23,13 @@ export const useFavoriteStore = defineStore("favorite", {
         this.favorite.splice(index, 1);
       }
     },
+    addFavorite(product){
+      if(!this.isFavorite(product.name)){
+        this.favorite.push(product);
+      }
+    },
+    isFavorite(favoriteName){
+      return this.favorite.some(product => product.name === favoriteName);
+    },
   },
 });
