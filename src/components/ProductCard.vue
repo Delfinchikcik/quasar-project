@@ -15,6 +15,7 @@
           </div>
           <q-card-section>
             <div class="text-h5 q-mt-sm q-mb-xs">{{ product.name }}</div>
+            <div class="text-h5 q-mt-sm q-mb-xs">{{ product.price }}</div>
             <div class="text-caption text-grey">
               {{ product.description }}
             </div>
@@ -29,8 +30,8 @@
             <div key="more-info" v-show="expanded[product.id]">
               <q-separator />
               <q-card-section key="more-info-sections" class="text-subtitle2">
-                <p key="group">{{ product.group }}</p>
-                <p key="duration">{{ product.duration }}</p>
+                <p key="group icon-people">Размер группы: {{ product.group }} </p>
+                <p key="duration">Продолжительность экскурсии (в часах): {{ product.duration }}</p>
               </q-card-section>
             </div>
           </transition-group>
@@ -53,9 +54,9 @@ const props = defineProps({
   }
 });
 
-for (const product of props.productsList) {
-  slide.value[product.id] = ref(1);
-}
+// for (const product of props.productsList) {
+//   slide.value[product.id] = ref(1);
+// }
 
 const toggleExpanded = (id) => {
   expanded.value[id] = !expanded.value[id];

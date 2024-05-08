@@ -6,13 +6,14 @@ export const useProductsStore = defineStore("products", {
 }),
 
 getters: {
-  getProducts:(state) => {
-   return state.products
-  }
-},
+    getProducts(state) {
+      return state.products;
+    },
 
+},
   actions: {
-  setProducts(products) {
-    this.products.push(...products)}
-  }
-})
+    fetchProducts(products) {
+      this.products.push(...products);
+    },
+  },
+});

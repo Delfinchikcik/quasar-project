@@ -24,6 +24,7 @@
     "firebase": "^10.11.1",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
+    "graphql-ws": "^5.16.0",
     "pinia": "^2.0.11",
     "quasar": "^2.8.0",
     "react": "^18.3.1",

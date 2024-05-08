@@ -1,19 +1,31 @@
 <template>
   <div>
     <!-- фильтрация -->
-
+    <q-select v-model="selectedDestination" :options="destinations" label="Место вашего приключения" />
+    <q-select v-model="selectedType" :options="types" label="Тип путешествия" />
+    <q-select v-model="selectedSort" :options="sortOrderOptions" emit-value map-options label="Сортировка по цене" />
+    <!-- <q-input v-model="minPrice" type="number" label="Минимальная цена" />
+    <q-input v-model="maxPrice" type="number" label="Максимальная цена" /> -->
     <!-- сортировка -->
-
+    <!-- <button @click="getLazyProducts({ variables: filter })">
+      Apply Filters
+    </button> -->
+    <q-btn @click="getSortedProducts">Применить</q-btn>
+    <!-- карточки -->
     <ProductCard :productsList="productsList" />
   </div>
 </template>
 
 <script setup>
-import { watch, defineComponent } from "vue";
-import { useQuery } from "@vue/apollo-composable";
-import { useProductsStore } from "src/stores/products";
-import { GET_PRODUCTS } from "src/queries/getProducts";
-import ProductCard from "./ProductCard.vue";
+
+import { reactive, computed, ref, watch, defineComponent } from 'vue'
+import { useQuery, provideApolloClient } from '@vue/apollo-composable'
+import { GET_PRODUCTS, GET_SORTED_PRODUCTS } from '../queries/getProducts'
+import { useProductsStore } from 'src/stores/products';
+import ProductCard from './ProductCard.vue';
+import apolloClient from 'src/apollo/client';
+
+provideApolloClient(apolloClient);
 
 defineComponent({
   name: "ProductCatalog",
@@ -21,18 +33,44 @@ defineComponent({
     ProductCard,
   },
 });
+// Запускаем процесс при инициализации, подтягиваем карточки
+
 const products = useProductsStore();
+
 const { result, loading, error } = useQuery(GET_PRODUCTS);
-const productsList = products.products;
 
 watch(loading, (value) => {
-  if (!value) {
-    products.setProducts(result.value?.products);
-    console.log(result.value);
-  }
+  if (value) return;
+  products.fetchProducts(result.value?.products);
 });
-</script>
+const productsList = ref([])
 
+productsList.value = computed(() => products.products).value
+
+const selectedType = ref("")
+const selectedDestination = ref("")
+const selectedSort = ref("")
+const destinations = ref(["Ялта", "Санкт-Петербург"])
+const types = ref(["Групповая", "Индивидуальная"])
+const sortOrderOptions = [
+  { value: 'asc', label: 'От дешевых к дорогим' },
+  { value: 'desc', label: 'От дорогих к дешевым' },
+];
+
+const getSortedProducts = async () => {
+
+
+  const { result: sortedProductsResult, loading: sortedProductsLoading, error } = useQuery(GET_SORTED_PRODUCTS(selectedDestination.value, selectedType.value, selectedSort.value));
+  watch(sortedProductsResult, (value) => {
+    if (value) {
+      // console.log(sortedProductsResult)
+      // products.fetchProducts(sortedProductsResult.value?.products);
+      productsList.value = computed(() => sortedProductsResult.value?.products).value
+    }
+  });
+
+};
+</script>
 <style>
 .product-catalog__searchbar__input {
   outline: none;
