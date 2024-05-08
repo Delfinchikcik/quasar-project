@@ -2,12 +2,7 @@
   <div class="wrapper">
     <product-card :products-list="shopList" v-slot="{ uuid, product }">
       <slot>
-        <q-btn
-          @click="removeAtShop(uuid, product)"
-          flat
-          color="red"
-          label="Удалить"
-        />
+        <q-btn @click="removeAtShop(uuid, product)" flat color="red" label="Удалить" />
       </slot>
     </product-card>
     <q-dialog class="dialog_page" v-model="card">
@@ -15,64 +10,26 @@
         <h4 class="q-mt-sm q-mb-sm text-center">Оформление заказа</h4>
         <p class="q-my-none">Ваш заказ:</p>
         <q-card-section class="shopCartArea">
-          <div
-            class="q-my-sm flex wrap justify-between"
-            v-for="product in shopList"
-            :key="product.id"
-          >
+          <div class="q-my-sm flex wrap justify-between" v-for="product in shopList" :key="product.id">
             <div>{{ product.name }}</div>
             <div class="q-ml-md">{{ product.price }} р.</div>
           </div>
         </q-card-section>
         <p>Итого к оплате: {{ totalSum }}</p>
-        <q-form
-          prevent
-          @submit="onSubmit"
-          @reset="onReset"
-          class="q-gutter-md q-mt-md"
-        >
-          <q-input
-            filled
-            v-model="name"
-            label="ФИО*"
-            hint="Введите ваше ФИО"
-            lazy-rules
-            :rules="[(val) => (val && val.length > 0) || 'Напишите ваше имя']"
-          />
+        <q-form prevent @submit="onSubmit" @reset="onReset" class="q-gutter-md q-mt-md">
+          <q-input filled v-model="name" label="ФИО*" hint="Введите ваше ФИО" lazy-rules
+            :rules="[(val) => (val && val.length > 0) || 'Напишите ваше имя']" />
 
-          <q-input
-            filled
-            type="email"
-            v-model="email"
-            label="Выш e-mail"
-            lazy-rules
-            :rules="[
-              (val) => (val !== null && val !== '') || 'Вы ничего не ввели',
-              (val) => val.includes('@') || 'Введите корректный e-mail',
-            ]"
-          />
+          <q-input filled type="email" v-model="email" label="Ваш e-mail" lazy-rules :rules="[
+            (val) => (val !== null && val !== '') || 'Вы ничего не ввели',
+            (val) => val.includes('@') || 'Введите корректный e-mail',
+          ]" />
 
-          <q-toggle
-            v-model="accept"
-            @click="disableChange"
-            label="Я принимаю лицензионное соглашения"
-          />
+          <q-toggle v-model="accept" @click="disableChange" label="Я принимаю лицензионное соглашения" />
 
           <div>
-            <q-btn
-              label="Оформить"
-              :disable="submitDisable"
-              type="submit"
-              color="primary"
-            />
-            <q-btn
-              label="Стереть данные"
-              type="reset"
-              color="primary"
-              flat
-              class="q-ml-sm"
-              @click="resetForm"
-            />
+            <q-btn label="Оформить" :disable="submitDisable" type="submit" color="primary" />
+            <q-btn label="Стереть данные" type="reset" color="primary" flat class="q-ml-sm" @click="resetForm" />
           </div>
         </q-form>
       </q-card>
@@ -166,6 +123,7 @@ const totalPrice = () => {
   border-radius: 10px;
   padding: 10px;
 }
+
 .shopCartArea {
   border: 1px solid black;
 }

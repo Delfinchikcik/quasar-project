@@ -11,6 +11,7 @@
       Apply Filters
     </button> -->
     <q-btn @click="getSortedProducts">Применить</q-btn>
+    <!-- <q-btn @click="resetFilters">Сбросить</q-btn> -->
     <!-- карточки -->
     <ProductCard :productsList="productsList" />
   </div>
@@ -41,7 +42,7 @@ const { result, loading, error } = useQuery(GET_PRODUCTS);
 
 watch(loading, (value) => {
   if (value) return;
-  products.fetchProducts(result.value?.products);
+  products.setProducts(result.value?.products);
 });
 const productsList = ref([])
 
@@ -68,9 +69,9 @@ const getSortedProducts = async () => {
       productsList.value = computed(() => sortedProductsResult.value?.products).value
     }
   });
-
-};
+}
 </script>
+
 <style>
 .product-catalog__searchbar__input {
   outline: none;
